@@ -74,11 +74,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
     'store',
-    
+    'user_auth',
     'log',
-    'django_auth_adfs',
+
     
 ]
 
@@ -166,23 +167,11 @@ AUTHENTICATION_BACKENDS = (
 
 
 
-AUTH_ADFS = {
-    "TENANT_ID":"",
-    "CLIENT_ID": "",
-    #"RELYING_PARTY_ID": "your-adfs-RPT-name",
-    # Make sure to read the documentation about the AUDIENCE setting
-    # when you configured the identifier as a URL!
-    #"AUDIENCE": "microsoft:identityserver:your-RelyingPartyTrust-identifier",
-    "CA_BUNDLE": False,
-    "CLAIM_MAPPING": {"first_name": "given_name",
-                      "last_name": "family_name",
-                      "email": "email"},
-}
 
-LOGIN_URL = "django_auth_adfs:login"
+LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/"
 
-
+AUTH_USER_MODEL='user_auth.User'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
