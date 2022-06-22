@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from distutils.debug import DEBUG
 from pathlib import Path
 from decouple import config
 from dj_database_url import parse as db_url
@@ -28,7 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+#DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG=True
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
@@ -62,7 +64,7 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 
 
 
-ALLOWED_HOSTS = ['http://127.0.0.1:8000/']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','example.com']
 
 
 # Application definition
@@ -79,6 +81,7 @@ INSTALLED_APPS = [
     'store',
     'user_auth',
     'log',
+    'microsoft_auth',
 
     
 ]
@@ -107,6 +110,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                 'microsoft_auth.context_processors.microsoft',
             ],
         },
     },
@@ -161,9 +165,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = (
     
-    'django_auth_adfs.backend.AdfsAuthCodeBackend',
+    #'django_auth_adfs.backend.AdfsAuthCodeBackend',
+    'microsoft_auth.backends.MicrosoftAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend'
     
 )
+
+# values you got from step 2 from your Mirosoft app
+MICROSOFT_AUTH_CLIENT_ID =  config('CLIENT_ID', default='localhost')
+MICROSOFT_AUTH_CLIENT_SECRET = config('SECRET_ID', default='localhost')
+# Tenant ID is also needed for single tenant applications
+MICROSOFT_AUTH_TENANT_ID = config('TENANT_ID')
+
+
+# pick one MICROSOFT_AUTH_LOGIN_TYPE value
+# Microsoft authentication
+# include Microsoft Accounts, Office 365 Enterpirse and Azure AD accounts
+MICROSOFT_AUTH_LOGIN_TYPE = 'ma'
+
+# Xbox Live authentication
+MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # Xbox Live authentication
 
 
 
