@@ -62,7 +62,7 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 
 
 
-ALLOWED_HOSTS = ['http://127.0.0.1:8000']
+ALLOWED_HOSTS = ['http://127.0.0.1:8000/']
 
 
 # Application definition
@@ -91,7 +91,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_auth_adfs.middleware.LoginRequiredMiddleware',
+    #'django_auth_adfs.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'azure_test_django.urls'
