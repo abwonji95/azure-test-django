@@ -164,12 +164,12 @@ AUTHENTICATION_BACKENDS = (
 
 
 AUTH_ADFS = {
-    "SERVER": "adfs.yourcompany.com",
-    "CLIENT_ID": "your-configured-client-id",
-    "RELYING_PARTY_ID": "your-adfs-RPT-name",
+    "TENANT_ID":"",
+    "CLIENT_ID": "",
+    #"RELYING_PARTY_ID": "your-adfs-RPT-name",
     # Make sure to read the documentation about the AUDIENCE setting
     # when you configured the identifier as a URL!
-    "AUDIENCE": "microsoft:identityserver:your-RelyingPartyTrust-identifier",
+    #"AUDIENCE": "microsoft:identityserver:your-RelyingPartyTrust-identifier",
     "CA_BUNDLE": False,
     "CLAIM_MAPPING": {"first_name": "given_name",
                       "last_name": "family_name",
