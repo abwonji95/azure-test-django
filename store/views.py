@@ -46,4 +46,3 @@ from rest_framework.authtoken.models import Token
 @permission_classes([IsAuthenticated])
 def index(request):
     return render(request, 'store/home.html', context=None),
-
