@@ -56,3 +56,7 @@ class LoginView(generics.GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
+def index(request):
+    return render(request, 'user_auth/users.html', context=None)

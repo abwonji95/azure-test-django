@@ -3,5 +3,5 @@ from .views import *
 from  . import views
 from rest_framework_simplejwt.views import TokenRefreshView
 urlpatterns = [
-    
+    path('', views.index, name='index'),
 ]

@@ -189,8 +189,8 @@ MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # Xbox Live authentication
 
 
 
-LOGIN_URL = "/"
-LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "http://localhost:8000/"
+LOGIN_REDIRECT_URL = "http://localhost:8000/"
 
 AUTH_USER_MODEL='user_auth.User'
 REST_FRAMEWORK = {
