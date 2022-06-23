@@ -58,5 +58,11 @@ class LoginView(generics.GenericAPIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
     
 
+@csrf_exempt
+@api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
 def index(request):
     return render(request, 'user_auth/users.html', context=None)
+
+
+
