@@ -64,7 +64,7 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 
 
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','example.com']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -81,7 +81,7 @@ INSTALLED_APPS = [
     'store',
     'user_auth',
     'log',
-    'microsoft_auth',
+    #'microsoft_auth',
 
     
 ]
@@ -110,7 +110,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                 'microsoft_auth.context_processors.microsoft',
+                # 'microsoft_auth.context_processors.microsoft',
             ],
         },
     },
@@ -166,11 +166,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTHENTICATION_BACKENDS = (
     
     #'django_auth_adfs.backend.AdfsAuthCodeBackend',
-    'microsoft_auth.backends.MicrosoftAuthenticationBackend',
+    #'microsoft_auth.backends.MicrosoftAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend'
     
 )
-
+"""
 # values you got from step 2 from your Mirosoft app
 MICROSOFT_AUTH_CLIENT_ID =  config('CLIENT_ID', default='localhost')
 MICROSOFT_AUTH_CLIENT_SECRET = config('SECRET_ID', default='localhost')
@@ -186,11 +186,17 @@ MICROSOFT_AUTH_LOGIN_TYPE = 'ma'
 # Xbox Live authentication
 MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # Xbox Live authentication
 
+"""
+
+
+
 
 
 
 LOGIN_URL = "http://localhost:8000/"
 LOGIN_REDIRECT_URL = "http://localhost:8000/"
+
+
 
 AUTH_USER_MODEL='user_auth.User'
 REST_FRAMEWORK = {
