@@ -22,5 +22,7 @@ urlpatterns = [
     path('', include('user_auth.urls')),
     path('log/', include('log.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    #path('accounts/', include('allauth.urls')),
+    path('microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
     
 ]

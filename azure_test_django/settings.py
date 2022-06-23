@@ -81,7 +81,13 @@ INSTALLED_APPS = [
     'store',
     'user_auth',
     'log',
-    #'microsoft_auth',
+    #'azure_ad_auth',
+    'microsoft_auth',
+    #'allauth',
+    #'allauth.account',
+    #'allauth.socialaccount',
+    #'allauth.socialaccount.providers.azure',
+    #'allauth.socialaccount.providers.microsoft',
 
     
 ]
@@ -110,7 +116,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'microsoft_auth.context_processors.microsoft',
+                'microsoft_auth.context_processors.microsoft',
             ],
         },
     },
@@ -161,6 +167,33 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = (
+    'microsoft_auth.backends.MicrosoftAuthenticationBackend',
+    #'azure_ad_auth.backends.AzureActiveDirectoryBackend',
+    #'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend'
+)
+
+MICROSOFT_AUTH_LOGIN_TYPE = 'ma'
+
+
+
+
+AAD_TENANT_ID= config('TENANT_ID')
+
+
+
+AAD_CLIENT_ID=config('CLIENT_ID')
+
+
+
+MICROSOFT_AUTH_CLIENT_ID=config('CLIENT_ID')
+       
+MICROSOFT_AUTH_CLIENT_SECRET='G968Q~Kjwgn_F78jfFgGEycv7aB_PEmX2yvWDbYZ'
+
+
+
 """
 
 AUTHENTICATION_BACKENDS = (
@@ -195,7 +228,7 @@ MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # Xbox Live authentication
 
 LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/"
-SITE_ID=4
+#SITE_ID=5
 
 
 
