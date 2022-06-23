@@ -161,7 +161,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+"""
 
 AUTHENTICATION_BACKENDS = (
     
@@ -170,7 +170,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend'
     
 )
-"""
+
 # values you got from step 2 from your Mirosoft app
 MICROSOFT_AUTH_CLIENT_ID =  config('CLIENT_ID', default='localhost')
 MICROSOFT_AUTH_CLIENT_SECRET = config('SECRET_ID', default='localhost')
@@ -193,12 +193,14 @@ MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # Xbox Live authentication
 
 
 
-LOGIN_URL = "http://localhost:8000/"
-LOGIN_REDIRECT_URL = "http://localhost:8000/"
+LOGIN_URL = "/"
+LOGIN_REDIRECT_URL = "/"
+SITE_ID=4
 
 
 
 AUTH_USER_MODEL='user_auth.User'
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.

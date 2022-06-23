@@ -18,10 +18,9 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('oauth2/', include('django_auth_adfs.urls')),
     path('store/', include('store.urls')),
-    path('/', include('user_auth.urls')),
+    path('', include('user_auth.urls')),
     path('log/', include('log.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    #path('microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
+    
 ]
