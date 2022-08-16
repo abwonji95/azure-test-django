@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'store',
     'user_auth',
     'log',
+    'drf_api_logger',
     #'azure_ad_auth',
     'microsoft_auth',
     #'allauth',
@@ -101,6 +102,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #'django_auth_adfs.middleware.LoginRequiredMiddleware',
+    'drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware', # Add here
+
 ]
 
 ROOT_URLCONF = 'azure_test_django.urls'
@@ -123,6 +126,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'azure_test_django.wsgi.application'
+
+DRF_API_LOGGER_DATABASE = True
+
+DRF_API_LOGGER_SIGNAL = True
 
 
 # Database
@@ -228,15 +235,8 @@ MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # Xbox Live authentication
 
 LOGIN_URL = "/"
 LOGIN_REDIRECT_URL = "/"
-#SITE_ID=5
-
-
-
 AUTH_USER_MODEL='user_auth.User'
-
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
